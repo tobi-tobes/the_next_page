@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="styles/header.css">
+        <link rel="stylesheet" href="styles/common.css">
+        <link rel="stylesheet" href="styles/hero.css">
+        <link rel="stylesheet" href="styles/filters.css">
+        <link rel="stylesheet" href="styles/recommendations.css">
+        <link rel="stylesheet" href="styles/bookshelf.css">
+        <link rel="stylesheet" href="styles/footer.css">
+        <title>The Next Page</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="recommendations.js"></script>
+        <script type="text/javascript" src="filters.js"></script>
+        <script type="text/javascript" src="bookshelf.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="header-items">
+                <h1 id="site-name"><a href="home.html">The Next Page</a></h1>
+                <nav>
+                    <h2 class="menu-item"><a href="about.html">About</a></h2>
+                    <h2 class="menu-item">Help</h2>
+                </nav>
+            </div>
+        </header>
+        <div class="home-container">
+            <section id="hero">
+                <h2 class="hero-header">Find Your Next Favorite Read!</h2>
+                <h4 class="hero-sub-header">Make reading simple again!</h4>
+                <div class="hero-buttons">
+                    <button class="try-it"><a href="#filters">Try it!</a></button>
+                    <button class="learn-more">Learn More</button>
+                </div>
+            </section>
+            <section id="filters">
+                <h3 class="filters-section-header">To get your recommendations, pick from the options below:</h3>
+                <div class="dropdown">
+                    <button class="dropbtn">Pick a genre...</button>
+                    <ul class="popover">
+                        <li class="popover-option">Fiction</li>
+                        <li class="popover-option">Non-Fiction</li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Pick a topic...</button>
+                    <ul class="popover">
+                        <li class="popover-option">Contemporary</li>
+                        <li class="popover-option">Fantasy</li>
+                        <li class="popover-option">Sci-Fi</li>
+                        <li class="popover-option">Mystery</li>
+                        <li class="popover-option">Horror</li>
+                        <li class="popover-option">Historical</li>
+                        <li class="popover-option">Romance</li>
+                        <li class="popover-option">Other</li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Pick an age category...</button>
+                    <ul class="popover">
+                        <li class="popover-option">Children</li>
+                        <li class="popover-option">Middle Grade</li>
+                        <li class="popover-option">Young Adult</li>
+                        <li class="popover-option">Adult</li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Pick an age category...</button>
+                    <ul class="popover">
+                        <li class="popover-option">Children</li>
+                        <li class="popover-option">Middle Grade</li>
+                        <li class="popover-option">Young Adult</li>
+                        <li class="popover-option">Adult</li>
+                    </ul>
+                </div>
+                <button class="get-your-recommendations">Get your recommendations!</button>
+                <h4>or</h4>
+                <button class="random-book">Pick a random book!</button>
+            </section>
+            <section id="recommendations">
+                <h3 class="recommendations-section-header">Based on your choices, here are some recommendations for you:</h3>
+                <div class="recommended-books">
+                    <div class="recommended-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="like"></div>
+                            <div class="not-like"></div>
+                        </div>
+                    </div>
+                    <div class="recommended-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="like"></div>
+                            <div class="not-like"></div>
+                        </div>
+                    </div>
+                    <div class="recommended-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="like"></div>
+                            <div class="not-like"></div>
+                        </div>
+                    </div>
+                    <div class="recommended-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="like"></div>
+                            <div class="not-like"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="view-your-bookshelf">View your bookshelf!</button>
+            </section>
+            <section id="bookshelf">
+                <h3 class="bookshelf-section-header">Here are the books on your recommendations bookshelf:</h3>
+                <div class="bookshelf-books">
+                    <div class="bookshelf-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="remove"></div>
+                        </div>
+                    </div>
+                    <div class="bookshelf-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="remove"></div>
+                        </div>
+                    </div>
+                    <div class="bookshelf-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="remove"></div>
+                        </div>
+                    </div>
+                    <div class="bookshelf-book">
+                        <div class="book-cover"></div>
+                        <div class="options">
+                            <div class="remove"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bookshelf-buttons">
+                    <button class="download-your-bookshelf">Download your bookshelf!</button>
+                    <button class="get-new-recommendations">Get new recommendations</button>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <h3 class="footer-header">Portfolio Project created by:</h3>
+            <div class="contributors">
+                <div class="contributor">
+                    <h4 class="contributor-name">Oluwaseyi Salami</h4>
+                    <div class="contributor-socials">
+                        <div class="linkedin"></div>
+                        <div class="github"></div>
+                    </div>
+                </div>
+                <div class="contributor">
+                    <h4 class="contributor-name">Oluwatobi Tijani</h4>
+                    <div class="contributor-socials">
+                        <div class="linkedin"></div>
+                        <div class="github"></div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="copyright">Copyright &copy; 2023</h5>
+        </footer>
+    </body>
+</html>
