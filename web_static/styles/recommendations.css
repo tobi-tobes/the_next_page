@@ -1,0 +1,75 @@
+#recommendations {
+    height: 45rem;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10.12rem;
+    padding-right: 10.12rem;
+    justify-content: center;
+    align-items: left;
+}
+
+.recommendations-section-header {
+    width: 25rem;
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+
+.recommended-books {
+    height: 22rem;
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.recommended-book {
+    height: 19rem;
+    width: 14rem;
+    margin-right: 3rem;
+    display: inline-block;
+}
+
+.options {
+    height: 3rem;
+    width: 14rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 1rem;
+}
+
+.options div:hover {
+    opacity: 90%;
+}
+
+.book-cover {
+    background-color: blueviolet;
+    height: 16rem;
+    width: 14rem;
+    border-radius: 0.5rem;
+}
+
+.like {
+    background-image: url(../images/mdi_heart.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 2rem;
+    width: 2rem;
+}
+
+.not-like {
+    background-image: url(../images/mdi_trashcan.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 2rem;
+    width: 2rem;
+}
+
+.view-your-bookshelf {
+    background: #0ABDCA;
+    border: none;
+    width: 13rem;
+    align-self: center;
+}
