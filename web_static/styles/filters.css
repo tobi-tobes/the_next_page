@@ -1,0 +1,74 @@
+#filters {
+    height: 45rem;
+    background: #0ABDCA;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10.12rem;
+    padding-right: 10.12rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.filters-section-header {
+    width: 25rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.dropdown {
+    width: 18rem;
+}
+
+.dropbtn {
+    width: 18rem;
+    text-align: left;
+    padding-left: 1.5rem;
+    background-color: white;
+    background-image: url(../images/dropdown_arrow.svg);
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-size: 1rem;
+    margin-top: 2.5rem;
+}
+
+.popover {
+    display: none;
+    background-color: white;
+    width: 18rem;
+    text-align: left;
+    padding-left: 1.5rem;
+    margin-top: 0px;
+    position: absolute;
+    border-radius: 0.5rem;
+}
+
+.dropbtn:hover + .popover, .popover:hover {
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+ul.popover li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.popover-option input[type="checkbox"] {
+    margin-right: 0.8rem;
+}
+
+.get-your-recommendations {
+    margin-top: 2.8rem;
+    background: #F5E263;
+    border: none;
+}
+
+.pick-a-random-book {
+    background: none;
+}

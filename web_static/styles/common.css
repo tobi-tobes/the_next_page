@@ -26,9 +26,15 @@ a, a:visited, a:hover, a:active {
 button {
     height: 2rem;
     border-radius: 0.5rem;
-    font-size: 1.125rem;
+    border-width: 0.1rem;
+    font-size: 1rem;
     font-weight: 600;
     text-align: center;
-    padding: 0.8rem, 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     vertical-align: middle;
+}
+
+button:hover {
+    opacity: 90%;
 }
