@@ -6,7 +6,7 @@ from .base_model import BaseModel
 
 class User(BaseModel):
     """The User class, inherits from BaseModel
-    
+
     Attributes:
         first_name (str): the user's first name
         last_name (str): the user's last name

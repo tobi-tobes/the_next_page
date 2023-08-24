@@ -2,8 +2,9 @@
 """The BaseModel module
 """
 from datetime import datetime
-from models import storage
 from uuid import uuid4
+
+from models import storage
 
 
 class BaseModel:

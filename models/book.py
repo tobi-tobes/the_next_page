@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """The Book module
 """
-from .base_model import BaseModel
 from datetime import datetime
+
+from .base_model import BaseModel
 
 
 class Book(BaseModel):
