@@ -203,14 +203,18 @@ class TheNextPageCommand(cmd.Cmd):
         elif len(tokens) == 3:
             if type(tokens[2]) is dict:
                 for k, v in tokens[2].items():
+                    if type(v) is str:
+                        v = v.replace('_', ' ')
                     setattr(storage.all()[key], k, v)
                     storage.save()
                 return
             print("** value missing **")
 
         else:
-            if tokens[3][0] == tokens[3][-1] == '"':
-                tokens[3] = tokens[3][1:-1]
+            # if tokens[3][0] == tokens[3][-1] == '"':
+            #     tokens[3] = tokens[3][1:-1]
+            if '_' in tokens[3]:
+                tokens[3] = tokens[3].replace('_', ' ')
             elif tokens[3].isdigit():
                 tokens[3] = int(tokens[3])
             elif tokens[3].replace('.', "", 1).isdigit():
