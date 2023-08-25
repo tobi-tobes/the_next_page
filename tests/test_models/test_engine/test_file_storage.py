@@ -6,6 +6,10 @@ import unittest
 
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.book import Book
+from models.bookshelf import Bookshelf
+from models.genre import Genre
+from models.user import User
 
 
 class TestFileStorage(unittest.TestCase):
@@ -32,11 +36,28 @@ class TestFileStorage(unittest.TestCase):
         b1, b2 = BaseModel(), BaseModel()
         self.fs.new(b1)
         self.fs.new(b2)
-        all_objs = self.fs.all()
 
         self.assertIn("BaseModel.{}".format(b1.id), all_objs)
         self.assertIn("BaseModel.{}".format(b2.id), all_objs)
         self.assertEqual(len(all_objs), 2)
+        book, bookshelf, genre, user = Book(), Bookshelf(), Genre(), User()
+
+        self.fs.new(book)
+        self.fs.new(bookshelf)
+        self.fs.new(genre)
+        self.fs.new(user)
+
+        self.assertEqual(len(all_objs), 6)
+        self.assertIn("Book.{}".format(book.id), self.fs.all(Book))
+        self.assertIn("Bookshelf.{}".format(bookshelf.id),
+                      self.fs.all(Bookshelf))
+        self.assertIn("Genre.{}".format(genre.id), self.fs.all(Genre))
+
+        self.assertIn("User.{}".format(user.id), self.fs.all(User))
+        self.assertNotIn("User.{}".format(user.id), self.fs.all(Book))
+        self.assertNotIn("User.{}".format(user.id), self.fs.all(Bookshelf))
+        self.assertNotIn("User.{}".format(user.id), self.fs.all(Genre))
+        self.assertNotIn("Book.{}".format(book.id), self.fs.all(User))
 
     def test_new(self):
         """Tests the new method
@@ -55,7 +76,6 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         """Tests the save method
         """
-        all_objs = self.fs.all()
         obj1, obj2 = BaseModel(), BaseModel()
         self.fs.new(obj1)
         self.fs.new(obj2)
@@ -93,3 +113,17 @@ class TestFileStorage(unittest.TestCase):
                          obj1.to_dict())
         self.assertEqual(all_objs["BaseModel.{}".format(obj2.id)].to_dict(),
                          obj2.to_dict())
+
+    def test_delete(self):
+        """Tests the delete method
+        """
+        all_objs = self.fs.all()
+        obj1, obj2 = BaseModel(), BaseModel()
+        self.fs.new(obj1)
+        self.fs.new(obj2)
+
+        self.assertIn("BaseModel.{}".format(obj1.id), all_objs)
+        self.assertIn("BaseModel.{}".format(obj2.id), all_objs)
+        self.fs.delete(obj1)
+        self.assertNotIn("BaseModel.{}".format(obj1.id), all_objs)
+        self.assertIn("BaseModel.{}".format(obj2.id), all_objs)
