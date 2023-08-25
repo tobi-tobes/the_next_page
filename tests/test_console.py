@@ -87,6 +87,60 @@ class TestConsole(unittest.TestCase):
             self.cns.onecmd("create User")
             self.assertEqual(36, len(f.getvalue().strip()))
 
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.cns.onecmd("create Book")
+            self.assertEqual(36, len(f.getvalue().strip()))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.cns.onecmd("create Bookshelf")
+            self.assertEqual(36, len(f.getvalue().strip()))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.cns.onecmd("create Genre")
+            self.assertEqual(36, len(f.getvalue().strip()))
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            params = ('title="War_and_Peace" author="Leo_Tolstoy" '
+                      'pub_date=1869/01/01 age_category="Adult" '
+                      'page_length=1225 fiction="True" '
+                      'description="A_Russian_novel"')
+            self.cns.onecmd("create Book " + params)
+            self.assertEqual(36, len(f.getvalue().strip()))
+            self.cns.onecmd("show Book " + f.getvalue().strip())
+            self.assertIn("'title': 'War and Peace'", f.getvalue())
+
+            self.assertIn("'author': 'Leo Tolstoy'", f.getvalue())
+            self.assertIn("'pub_date': datetime.date(1869, 1, 1)",
+                          f.getvalue())
+            self.assertIn("'age_category': 'Adult'", f.getvalue())
+            self.assertIn("'page_length': 1225", f.getvalue())
+
+            self.assertIn("'fiction': True", f.getvalue())
+            self.assertIn("'description': 'A Russian novel'", f.getvalue())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            params = 'name="My_Bookshelf"'
+            self.cns.onecmd("create Bookshelf " + params)
+            self.assertEqual(36, len(f.getvalue().strip()))
+            self.cns.onecmd("show Bookshelf " + f.getvalue().strip())
+            self.assertIn("'name': 'My Bookshelf'", f.getvalue())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            params = 'name="Fiction"'
+            self.cns.onecmd("create Genre " + params)
+            self.assertEqual(36, len(f.getvalue().strip()))
+            self.cns.onecmd("show Genre " + f.getvalue().strip())
+            self.assertIn("'name': 'Fiction'", f.getvalue())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            params = ('first_name="John" last_name="Doe" '
+                      'email="johndoe@gmail.com"')
+            self.cns.onecmd("create User " + params)
+            self.assertEqual(36, len(f.getvalue().strip()))
+            self.cns.onecmd("show User " + f.getvalue().strip())
+
+            self.assertIn("'first_name': 'John'", f.getvalue())
+            self.assertIn("'last_name': 'Doe'", f.getvalue())
+            self.assertIn("'email': 'johndoe@gmail.com'", f.getvalue())
+
     def test_show(self):
         """Test the show command
         """
