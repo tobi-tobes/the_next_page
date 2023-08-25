@@ -3,13 +3,15 @@
 """
 import ast
 import cmd
+import sys
+from datetime import date
+
 from models import storage
 from models.base_model import BaseModel
 from models.book import Book
 from models.bookshelf import Bookshelf
 from models.genre import Genre
 from models.user import User
-import sys
 
 
 class TheNextPageCommand(cmd.Cmd):
@@ -20,7 +22,11 @@ class TheNextPageCommand(cmd.Cmd):
         classes (tuple): The list of classes that can be created
     """
     prompt = '(tnp) ' if sys.__stdin__.isatty() else ''
-    classes = ('BaseModel', 'Book', 'Bookshelf', 'Genre', 'User')
+    classes = {'BaseModel': BaseModel, 'Book': Book,
+               'Bookshelf': Bookshelf, 'Genre': Genre,
+               'User': User}
+    types = {'page_length': int, 'fiction': bool,
+             'pub_date': date}
 
     def precmd(self, line):
         """Displays a prompt before each command in non-interactive mode
@@ -87,10 +93,15 @@ class TheNextPageCommand(cmd.Cmd):
         return False
 
     def do_create(self, arg):
-        """Creates a new instance of a given class, saves it,
-        and prints the id
+        """Create an object of any class with optional parameters
 
         Usage: create <class name>, OR <class name>.create()
+            OR create <Class name> <param1> <param2> <param3> ...
+        Param syntax: <key name>=<value>
+        Value syntax:
+            - String: "<value>"
+            - Integer: <number>
+            - Date: <YYYY/MM/DD>
         """
         if not arg:
             print("** class name missing **")
@@ -98,10 +109,28 @@ class TheNextPageCommand(cmd.Cmd):
         tokens = arg.split()
         if tokens[0] not in self.classes:
             print("** class doesn't exist **")
-        else:
-            new_instance = eval(tokens[0])()
-            new_instance.save()
-            print(new_instance.id)
+            return
+
+        new_instance = self.classes[tokens[0]]()
+        # Handle the parameters
+        if len(tokens) > 1:
+            for i in range(1, len(tokens)):
+                if "=" in tokens[i]:
+                    key, value = tokens[i].split("=")
+                    # Some values may have underscores. For later handling
+                    value = value.replace("_", " ").replace('\"', '"')
+                    if value[0] == '"' and value[-1] == '"':
+                        value = value[1:-1]
+                    if key in self.types:
+                        # Convert a date string to a date object
+                        if self.types[key] is date:
+                            year, month, day = value.split("/")
+                            value = date(int(year), int(month), int(day))
+                        else:
+                            value = self.types[key](value)
+                    setattr(new_instance, key, value)
+        print(new_instance.id)
+        new_instance.save()
 
     def do_show(self, arg):
         """Prints the string representation of an instance based on the

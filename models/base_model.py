@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """The BaseModel module
 """
-from datetime import datetime
+from datetime import datetime, date
 from uuid import uuid4
 
 from models import storage
@@ -17,6 +17,8 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key in ["created_at", "updated_at"]:
                     value = datetime.fromisoformat(value)
+                if key == "pub_date":
+                    value = date.fromisoformat(value)
                 if key != "__class__":
                     setattr(self, key, value)
         else:
@@ -44,6 +46,9 @@ class BaseModel:
         new_dict["__class__"] = self.__class__.__name__
         new_dict["created_at"] = self.created_at.isoformat()
         new_dict["updated_at"] = self.updated_at.isoformat()
+
+        if "pub_date" in new_dict:
+            new_dict["pub_date"] = self.pub_date.isoformat()
 
         return new_dict
 
