@@ -1,32 +1,25 @@
 #!/usr/bin/python3
 """This module tests the FileStorage class"""
 import json
-from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
 import os
 import unittest
 
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+
 
 class TestFileStorage(unittest.TestCase):
-    """Tests the FileStorage class"""
-
+    """Tests the FileStorage class
+    """
     def setUp(self):
         """Sets up the test environment
         """
         self.fs = FileStorage()
-        self.cwd = os.getcwd()
-
-        # Change to a temporary directory
-        os.chdir("/tmp")
+        self.fs._FileStorage__file_path = "test.json"
+        self.fs._FileStorage__objects = {}
+        
         if os.path.exists(self.fs._FileStorage__file_path):
             os.remove(self.fs._FileStorage__file_path)
-
-    def tearDown(self):
-        """Tears down the test environment
-        """
-        if os.path.exists(self.fs._FileStorage__file_path):
-            os.remove(self.fs._FileStorage__file_path)
-        os.chdir(self.cwd)
 
     def test_all(self):
         """Tests the all method
@@ -34,19 +27,28 @@ class TestFileStorage(unittest.TestCase):
         all_objs = self.fs.all()
         self.assertIsInstance(all_objs, dict)
         self.assertEqual(all_objs, self.fs._FileStorage__objects)
+        self.assertEqual(len(all_objs), 0)
+
+        b1, b2 = BaseModel(), BaseModel()
+        self.fs.new(b1)
+        self.fs.new(b2)
+        all_objs = self.fs.all()
+
+        self.assertIn("BaseModel.{}".format(b1.id), all_objs)
+        self.assertIn("BaseModel.{}".format(b2.id), all_objs)
+        self.assertEqual(len(all_objs), 2)
 
     def test_new(self):
         """Tests the new method
         """
-        fs = FileStorage()
-        all_objs = fs.all()
+        all_objs = self.fs.all()
         obj1 = BaseModel()
-        fs.new(obj1)
+        self.fs.new(obj1)
         self.assertIn("BaseModel.{}".format(obj1.id), all_objs)
         self.assertIs(all_objs["BaseModel.{}".format(obj1.id)], obj1)
 
         obj2 = BaseModel()
-        fs.new(obj2)
+        self.fs.new(obj2)
         self.assertIn("BaseModel.{}".format(obj2.id), all_objs)
         self.assertIs(all_objs["BaseModel.{}".format(obj2.id)], obj2)
 
