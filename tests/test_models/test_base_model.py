@@ -92,7 +92,8 @@ class TestBaseModel(unittest.TestCase):
         """Tests file compliance with PEP8
         """
         style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(["models/base_model.py"])
+        result = style.check_files(["models/base_model.py",
+                                    "tests/test_models/test_base_model.py"])
         self.assertEqual(result.total_errors, 0)
 
     def test_docstrings(self):
