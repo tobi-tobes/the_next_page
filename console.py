@@ -32,7 +32,7 @@ class TheNextPageCommand(cmd.Cmd):
         """Displays a prompt before each command in non-interactive mode
         """
         if not sys.__stdin__.isatty():
-            print('(hbnb)', end='')
+            print('(hbnb) ', end='')
         return line
 
     def parseline(self, line):
@@ -132,6 +132,14 @@ class TheNextPageCommand(cmd.Cmd):
         print(new_instance.id)
         new_instance.save()
 
+    def help_create(self):
+        """The create command help message
+        """
+        print("Creates a new instance of a class with optional parameters")
+        print("[Usage]: create <class name>, OR <class name>.create()")
+        print("      OR create <Class name> <param1> <param2> <param3> ...")
+        print("Param syntax: <key name>=<value>\n")
+
     def do_show(self, arg):
         """Prints the string representation of an instance based on the
         class name and id
@@ -185,16 +193,27 @@ class TheNextPageCommand(cmd.Cmd):
         output = []
         if not arg:
             for value in storage.all().values():
-                output.append(str(value))
-            print(output)
+                output.append(value)
 
         elif arg not in self.classes:
             print("** class doesn't exist **")
+            return
         else:
             for key, value in storage.all().items():
                 if arg == key.split('.')[0]:
-                    output.append(str(value))
-            print(output)
+                    output.append(value)
+
+        print('[', end='')
+        for obj in output:
+            print(obj, end=', ' if obj != output[-1] else '')
+        print(']')
+
+    def help_all(self):
+        """The all command help message
+        """
+        print("Displays the representation of all instances or all instances")
+        print("of a class")
+        print("[Usage]: all <class name> OR <class name>.all() OR all\n")
 
     def do_update(self, arg):
         """Updates/adds to an instance's attributes
