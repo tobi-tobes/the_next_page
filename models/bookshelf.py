@@ -45,7 +45,7 @@ class Bookshelf(BaseModel, Base):
                 if value.id in self.book_ids:
                     books.append(value)
             return books
-        
+
         @books.setter
         def books(self, obj):
             """Adds an id to the list of book ids
