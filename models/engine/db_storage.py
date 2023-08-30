@@ -7,6 +7,9 @@ from ..base_model import Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
+classes = {"BaseModel": BaseModel, "Book": Book, "Bookshelf": Bookshelf,
+           "Genre": Genre, "User": User}
+
 
 class DBStorage:
     """Defines the attributes and methods of the DBStorage class
@@ -92,6 +95,23 @@ class DBStorage:
         session_factory = sessionmaker(bind=self.__engine,
                                        expire_on_commit=False)
         self.__session = scoped_session(session_factory)
+
+    def get(self, cls, id):
+        """
+        Returns the object based on the class name and its ID, or
+        None if not found
+        """
+        from models import storage
+
+        if cls not in classes.values():
+            return None
+
+        all_cls = storage.all(cls)
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+
+        return None
 
     def close(self):
         """Closes the current database session
