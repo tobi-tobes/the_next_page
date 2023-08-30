@@ -3,9 +3,6 @@
 """
 import json
 
-classes = {"BaseModel": BaseModel, "Book": Book, "Bookshelf": Bookshelf,
-           "Genre": Genre, "User": User}
-
 
 class FileStorage:
     """Serializes instances to a JSON file and deserializes from a JSON file
@@ -90,6 +87,14 @@ class FileStorage:
         None if not found
         """
         from models import storage
+        from ..base_model import BaseModel
+        from ..book import Book
+        from ..bookshelf import Bookshelf
+        from ..genre import Genre
+        from ..user import User
+
+        classes = {"BaseModel": BaseModel, "Book": Book, "Bookshelf": Bookshelf,
+                   "Genre": Genre, "User": User}
 
         if cls not in classes.values():
             return None
