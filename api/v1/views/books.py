@@ -106,6 +106,9 @@ def get_recommended_books():
         if age_categories:
             if book.age_category not in age_categories:
                 continue
-        recommended_books.append(book.to_dict())
+
+        book_dict = book.to_dict()
+        book_dict.pop("genres", None)
+        recommended_books.append(book_dict)
 
     return jsonify(recommended_books)
