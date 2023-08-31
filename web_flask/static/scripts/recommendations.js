@@ -33,8 +33,10 @@ $(document).ready(function () {
         /* Using the savedBooksForBookshelf arrays, make API call to genres table to populate the
         bookshelf section before revealing the section as below */
         $.ajax({
-            type: GET,
-            url: 'http://0.0.0.0.5001/api/v1/books/' + savedBooksForBookshelf,
+            type: POST,
+            url: 'http://0.0.0.0.5001/api/v1/books/',
+            data: JSON.stringify({ book_ids: savedBooksForBookshelf }),
+            contentType: 'application/json',
             success: function (bookshelf) {
                 $('div.bookshelf-books').empty()
                 $.each(bookshelf, function(index, element) {
