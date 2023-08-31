@@ -10,8 +10,8 @@ $(document).ready(function () {
             /* Using the checkedGenres array, API call to genres table to populate the
             topic-filters dropdown menu */
             $.ajax({
-                type: GET,
-                url: 'http://0.0.0.0.5001/api/v1/genres/' + $(this).data('name'),
+                type: 'GET',
+                url: 'http://0.0.0.0:5001/api/v1/genres/' + $(this).data('name'),
                 success: function (topics) {
                     $.each(topics, function(index, element) {
                         const topicItem = `<li class="popover-option ${element.parent_genre}"><input type="checkbox" data-id=${element.id}>${element.name}</li>`;
@@ -58,8 +58,8 @@ $(document).ready(function () {
         API call to genres table to populate the recommendations section before revealing
         the section as below */
         $.ajax({
-            type: POST,
-            url: 'http://0.0.0.0.5001/api/v1/recommended_books/',
+            type: 'POST',
+            url: 'http://0.0.0.0:5001/api/v1/recommended_books/',
             data: JSON.stringify({ age_categories: checkedAgeCategories, book_lengths: checkedBookLengths, genres: checkedTopics }),
             contentType: 'application/json',
             success: function (recommendedBooks) {
@@ -90,8 +90,8 @@ $(document).ready(function () {
         /* Make API call to retrieve random book from the database before revealing
         the random book section */
         $.ajax({
-            type: GET,
-            url: 'http://0.0.0.0.5001/api/v1/random/',
+            type: 'GET',
+            url: 'http://http://0.0.0.0:5001/api/v1/random/',
             success: function (book) {
                 $('div#random-book').empty()
                 const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-description hidden"><p>${book.description}</p></div></div>`;
