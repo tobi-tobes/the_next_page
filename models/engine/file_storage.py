@@ -57,8 +57,8 @@ class FileStorage:
         from ..genre import Genre
         from ..user import User
 
-        classes = {"BaseModel": BaseModel, "Book": Book, "Bookshelf": Bookshelf,
-                   "Genre": Genre, "User": User}
+        classes = {"BaseModel": BaseModel, "Book": Book, "Bookshelf": Bookshelf
+                   , "Genre": Genre, "User": User}
 
         try:
             with open(self.__file_path, encoding="utf-8") as f:
@@ -80,3 +80,29 @@ class FileStorage:
             key = "{}.{}".format(obj.__class__.__name__, obj.id)
             if key in self.__objects:
                 del self.__objects[key]
+
+    def get(self, cls, id):
+        """
+        Returns the object based on the class name and its ID, or
+        None if not found
+        """
+        from models import storage
+        from ..base_model import BaseModel
+        from ..book import Book
+        from ..bookshelf import Bookshelf
+        from ..genre import Genre
+        from ..user import User
+
+        classes = {"BaseModel": BaseModel, "Book": Book, "Bookshelf": Bookshelf,
+                   "Genre": Genre, "User": User}
+
+        if cls not in classes.values():
+            return None
+
+        all_cls = storage.all(cls)
+
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+
+        return None

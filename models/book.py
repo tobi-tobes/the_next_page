@@ -5,8 +5,19 @@ from datetime import date
 
 from .base_model import BaseModel, Base
 from models import storage_type
-from sqlalchemy import Column, String, Integer, Boolean, Date
+from sqlalchemy import Column, String, Integer, Boolean, Date, ForeignKey, Table
 from sqlalchemy.orm import relationship
+
+if storage_type == "db":
+    book_genre = Table('book_genre', Base.metadata,
+                       Column('book_id', String(60),
+                              ForeignKey("books.id", onupdate='CASCADE',
+                                         ondelete='CASCADE'),
+                              primary_key=True),
+                       Column("genre_id", String(60),
+                              ForeignKey("genres.id", onupdate='CASCADE',
+                                         ondelete='CASCADE'),
+                              primary_key=True))
 
 
 class Book(BaseModel, Base):
@@ -23,6 +34,7 @@ class Book(BaseModel, Base):
         description (str): a description of the book
         cover_image (str): the url of the book's cover image
         bookshelves (list): a list of the bookshelves the book is in (ORM only)
+        genres (list): a list of genres related to the book
     """
     if storage_type == "db":
         __tablename__ = "books"
@@ -37,6 +49,8 @@ class Book(BaseModel, Base):
         cover_image = Column(String(1024), nullable=False)
         bookshelves = relationship("Bookshelf", secondary="bookshelf_books",
                                    back_populates="books")
+        genres = relationship("Genre", secondary=book_genre,
+                              viewonly=False)
     else:
         title = ""
         author = ""
@@ -47,6 +61,7 @@ class Book(BaseModel, Base):
         fiction = None
         description = ""
         cover_image = ""
+        genre_ids = []
 
         @property
         def bookshelves(self):
@@ -60,3 +75,16 @@ class Book(BaseModel, Base):
                 if self.id in value.book_ids:
                     bookshelves.append(value)
             return bookshelves
+
+        @property
+        def genres(self):
+            """ Getter for genres associated with book """
+            from models import storage
+            from .genre import Genre
+
+            genre_list = []
+            all_genres = storage.all(Genre).values()
+            for genre in all_genres:
+                if genre.book_id == self.id:
+                    genre_list.append(genre)
+            return genre_list
