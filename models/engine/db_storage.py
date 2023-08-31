@@ -7,9 +7,6 @@ from ..base_model import Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-classes = {"BaseModel": BaseModel, "Book": Book, "Bookshelf": Bookshelf,
-           "Genre": Genre, "User": User}
-
 
 class DBStorage:
     """Defines the attributes and methods of the DBStorage class
@@ -102,6 +99,14 @@ class DBStorage:
         None if not found
         """
         from models import storage
+        from ..base_model import BaseModel
+        from ..book import Book
+        from ..bookshelf import Bookshelf
+        from ..genre import Genre
+        from ..user import User
+
+        classes = {"BaseModel": BaseModel, "Book": Book,
+                   "Bookshelf": Bookshelf, "Genre": Genre, "User": User}
 
         if cls not in classes.values():
             return None
