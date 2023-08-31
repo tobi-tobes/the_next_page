@@ -38,15 +38,15 @@ def get_books_list():
     data = request.get_json()
 
     if data and len(data):
-        book_ids = data.get(book_ids, None)
+        book_ids_list = data.get('book_ids', None)
 
-    if not book_ids:
+    if not book_ids_list:
         abort(400, description="Not a JSON")
 
     books_list = []
 
     """ Iterate through book_ids and retrieve books """
-    for book_id in book_ids:
+    for book_id in book_ids_list:
         book = storage.get(Book, book_id)
         books_list.append(book.to_dict())
 
@@ -65,9 +65,9 @@ def get_recommended_books():
     data = request.get_json()
 
     if data and len(data):
-        age_categories = data.get(age_categories, None)
-        book_lengths = data.get(book_lengths, None)
-        genres = data.get(genres, None)
+        age_categories = data.get('age_categories', None)
+        book_lengths = data.get('book_lengths', None)
+        genres = data.get('genres', None)
 
     recommended_books = []
 
@@ -85,9 +85,10 @@ def get_recommended_books():
     for book in books:
         if genres:
             flag = False
-            book_genres = book.genres()
+            book_genres = book.genres
+            book_genre_ids = [genre.id for genre in book_genres]
             for genre in genres:
-                if genre not in book_genres:
+                if genre not in book_genre_ids:
                     flag = True
                     break
             if flag:
@@ -96,7 +97,7 @@ def get_recommended_books():
             book_length = ""
             if book.page_length < 200:
                 book_length = "Short"
-            elif book.page_length >= 200 and book.book_length < 500:
+            elif book.page_length >= 200 and book.page_length < 500:
                 book_length = "Mid-length"
             else:
                 book_length = "Long"
