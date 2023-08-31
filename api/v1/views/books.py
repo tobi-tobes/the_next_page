@@ -75,8 +75,8 @@ def get_recommended_books():
         if genres:
             flag = False
             book_genres = book.genres()
-            for genre in book_genres:
-                if genre not in genres:
+            for genre in genres:
+                if genre not in book_genres:
                     flag = True
                     break
             if flag:

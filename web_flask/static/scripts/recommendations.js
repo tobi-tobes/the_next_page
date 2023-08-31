@@ -43,7 +43,8 @@ $(document).ready(function () {
                     $(`div#${element.id} .bookshelf-book-cover`).css({
                         'background-image': `url(${element.cover_image})`,
                         'background-repeat': 'no-repeat',
-                        'background-size': 'contain'
+                        'background-size': 'contain',
+                        'background-position': 'center center'
                     });
                 });
             }
