@@ -14,7 +14,7 @@ def get_genres(parent_genre):
     """
 
     genre_list = []
-    all_genres = storage.all(Genre).values()
+    all_genres = list(storage.all(Genre).values())
 
     for genre in all_genres:
         if genre.parent_genre == parent_genre:

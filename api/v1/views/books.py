@@ -14,7 +14,7 @@ def get_random_book():
     """
 
     """ Retrieve all books from database """
-    all_books = storage.all(Book).values()
+    all_books = list(storage.all(Book).values())
 
     """ Find the length of the list to use as range for randint """
     length = len(all_books)
@@ -27,11 +27,22 @@ def get_random_book():
     return jsonify(random_book.to_dict())
 
 
-@app_views.route('/books/<book_ids>', methods=['GET'], strict_slashes=False)
-def get_books_list(book_ids):
+@app_views.route('/books', methods=['POST'], strict_slashes=False)
+def get_books_list():
     """
     Fetches books based on given book_ids
     """
+    if request.get_json() is None:
+        abort(400, description="Not a JSON")
+
+    data = request.get_json()
+
+    if data and len(data):
+        book_ids = data.get(book_ids, None)
+
+    if not book_ids:
+        abort(400, description="Not a JSON")
+
     books_list = []
 
     """ Iterate through book_ids and retrieve books """
@@ -60,7 +71,7 @@ def get_recommended_books():
 
     recommended_books = []
 
-    books = storage.all(Book).values()
+    books = list(storage.all(Book).values())
 
     if not data or not len(data) or (
             not age_categories and
