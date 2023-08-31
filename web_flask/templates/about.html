@@ -2,18 +2,18 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="styles/header.css">
-        <link rel="stylesheet" href="styles/footer.css">
-        <link rel="stylesheet" href="styles/common.css">
-        <link rel="stylesheet" href="styles/about.css">
+        <link rel="stylesheet" href="../static/styles/header.css">
+        <link rel="stylesheet" href="../static/styles/footer.css">
+        <link rel="stylesheet" href="../static/styles/common.css">
+        <link rel="stylesheet" href="../static/styles/about.css">
         <title>About</title>
     </head>
     <body>
         <header>
             <div class="header-items">
-                <h1 id="site-name"><a href="home.html">The Next Page</a></h1>
+                <h1 id="site-name"><a href="{{ url_for('home') }}">The Next Page</a></h1>
                 <nav>
-                    <h2 class="menu-item"><a href="about.html">About</a></h2>
+                    <h2 class="menu-item"><a href="{{ url_for('about') }}">About</a></h2>
                     <h2 class="menu-item"><a href="https://github.com/tobi-tobes/the_next_page/blob/master/README.md" target="_blank">Help</a></h2>
                 </nav>
             </div>
