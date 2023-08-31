@@ -82,7 +82,14 @@ def get_recommended_books():
             if flag:
                 continue
         if book_lengths:
-            if book.book_length not in book_lengths:
+            book_length = ""
+            if book.page_length < 200:
+                book_length = "Short"
+            else if book.page_length >= 200 and book.book_length < 500:
+                book_length = "Mid-length"
+            else:
+                book_length = "Long"
+            if book_length not in book_lengths:
                 continue
         if age_categories:
             if book.age_category not in age_categories:

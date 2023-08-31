@@ -280,3 +280,7 @@ meaning.genres.append(personal_dev)
 meaning.genres.append(biography)
 meaning.genres.append(memoir)
 meaning.genres.append(philosophy)
+
+storage.save()
+
+print("OK")
