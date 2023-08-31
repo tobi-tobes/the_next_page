@@ -1,0 +1,95 @@
+.bookshelf-section {
+    height: 45rem;
+    background: #0ABDCA;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10.12rem;
+    padding-right: 10.12rem;
+    justify-content: center;
+    align-items: left;
+}
+
+.bookshelf-section-header {
+    width: 25rem;
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+
+.bookshelf-books {
+    height: 22rem;
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.bookshelf-book {
+    height: 19rem;
+    width: 14rem;
+    margin-right: 3rem;
+    display: inline-block;
+}
+
+.options {
+    height: 3rem;
+    width: 14rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 1rem;
+}
+
+.options div:hover {
+    opacity: 90%;
+}
+
+.bookshelf-book-cover {
+    background-color: blueviolet;
+    height: 16rem;
+    width: 14rem;
+    border-radius: 0.5rem;
+}
+
+.bookshelf-book-description {
+    display: flex;
+    flex-direction: column;
+    height: 13rem;
+    background-color: white;
+    border-color: black;
+    border-radius: 0.5rem;
+    border-style: solid;
+    position: absolute;
+    overflow-y: auto;
+    left: 10.12rem;
+    right: 10.12rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.remove {
+    background-image: url(../images/ph_x-bold.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 2rem;
+    width: 2rem;
+}
+
+.bookshelf-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 35rem;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.download-your-bookshelf {
+    background: #F5E263;
+    border: none;
+}
+
+.get-new-recommendations {
+    background: none;
+}
