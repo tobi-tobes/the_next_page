@@ -18,5 +18,5 @@ The Next Page is the ALX Foundations Portfolio Project of Oluwaseyi Salami and O
 - Back-end: Python, MySQL, Flask
 
 ### Contributors
-- [Oluwatobi Tijani] (https://github.com/tobi-tobes)
-- [Oluwaseyi Salami] (https://github.com/Pinerealm)
+- [Oluwatobi Tijani](https://github.com/tobi-tobes)
+- [Oluwaseyi Salami](https://github.com/Pinerealm)
