@@ -4,7 +4,7 @@ $(document).ready(function () {
         the random book section */
         $.ajax({
             type: GET,
-            url: 'http://0.0.0.0:5001/api/v1/random/',
+            url: 'http://0.0.0.0:5001/api/v1/books/random/',
             success: function (book) {
                 $('div#random-book').empty()
                 const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-description hidden"><p>${book.description}</p></div></div>`;
