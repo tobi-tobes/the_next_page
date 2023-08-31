@@ -85,7 +85,7 @@ def get_recommended_books():
             book_length = ""
             if book.page_length < 200:
                 book_length = "Short"
-            else if book.page_length >= 200 and book.book_length < 500:
+            elif book.page_length >= 200 and book.book_length < 500:
                 book_length = "Mid-length"
             else:
                 book_length = "Long"
