@@ -2,7 +2,7 @@ $(document).ready(function () {
     const savedBooksForBookshelf = [];
     $(document).on('recommendationsReady', function () {
         $('body').on('click', '.book-cover', function () {
-	    const bookDescription = $(this).siblings('.book-cover-description');
+	        const bookDescription = $(this).siblings('.book-cover-description');
             bookDescription.toggleClass("hidden");
             bookDescription.toggleClass("book-description");
         });

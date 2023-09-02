@@ -1,8 +1,9 @@
 $(document).ready(function () {
     $(document).on('bookshelfReady', function () {
         $('body').on('click', '.bookshelf-book-cover', function () {
-            $('.bookshelf-book-cover-description').toggleClass("hidden");
-            $('.bookshelf-book-cover-description').toggleClass("bookshelf-book-description");
+            const bookDescription = $(this).siblings('.bookshelf-book-cover-description');
+            bookDescription.toggleClass("hidden");
+            bookDescription.toggleClass("book-description");
         });
 
         $('.bookshelf-book .options .remove').on('click', function () {
