@@ -73,6 +73,7 @@ $(document).ready(function () {
                         'background-size': 'contain',
                         'background-position': 'center center'
                     });
+		    console.log(`${element.description}`);
                 });
                 $(document).trigger('recommendationsReady');
             }

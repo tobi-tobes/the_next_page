@@ -9,7 +9,7 @@ $(document).ready(function () {
             /* Make API call to retrieve random book from the database before revealing
             the random book section */
             $.ajax({
-                type: GET,
+                type: 'GET',
                 url: 'http://0.0.0.0:5001/api/v1/books/random/',
                 success: function (book) {
                     $('div#random-book').empty()

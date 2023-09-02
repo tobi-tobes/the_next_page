@@ -2,8 +2,9 @@ $(document).ready(function () {
     const savedBooksForBookshelf = [];
     $(document).on('recommendationsReady', function () {
         $('body').on('click', '.book-cover', function () {
-            $('.book-cover-description').toggleClass("hidden");
-            $('.book-cover-description').toggleClass("book-description");
+	    const bookDescription = $(this).siblings('.book-cover-description');
+            bookDescription.toggleClass("hidden");
+            bookDescription.toggleClass("book-description");
         });
 
         $('body').on('click','.recommended-book .options .like', function () {

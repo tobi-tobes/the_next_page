@@ -76,7 +76,7 @@
 .book-description {
     display: flex;
     flex-direction: column;
-    height: 13rem;
+    max-height: 13rem;
     background-color: white;
     border-color: black;
     border-radius: 0.5rem;
@@ -89,4 +89,5 @@
     padding-right: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    white-space: pre-wrap;
 }
