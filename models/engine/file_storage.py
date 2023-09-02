@@ -106,3 +106,8 @@ class FileStorage:
                 return value
 
         return None
+
+    def close(self):
+        """Calls reload() method to deserialize JSON file to objects
+        """
+        self.reload()
