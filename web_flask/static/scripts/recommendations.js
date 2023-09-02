@@ -1,12 +1,12 @@
 $(document).ready(function () {
     const savedBooksForBookshelf = [];
 
-    $('.book-cover').on('click', function () {
+    $('body').on('click', '.book-cover', function () {
         $('.book-cover-description').toggleClass("hidden");
         $('.book-cover-description').toggleClass("book-description");
     });
 
-    $('.recommended-book .options .like').on('click', function () {
+    $('body').on('click','.recommended-book .options .like', function () {
         const grandparentID = $(this).closest('.recommended-book').attr('id');
         if(!savedBooksForBookshelf.includes(grandparentID)) {
             savedBooksForBookshelf.push(grandparentID);
@@ -18,7 +18,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.recommended-book .options .not-like').on('click', function () {
+    $('body').on('click', '.recommended-book .options .not-like', function () {
         const grandparentID = $(this).closest('.recommended-book').attr('id');
         $('#' + grandparentID).animate({ opacity: 0 }, 500, function() {
             $('#' + grandparentID).remove();
@@ -29,11 +29,11 @@ $(document).ready(function () {
         }
     });
 
-    $('.view-your-bookshelf').on('click', function () {
+    $('body').on('click', '.view-your-bookshelf', function () {
         /* Using the savedBooksForBookshelf arrays, make API call to genres table to populate the
         bookshelf section before revealing the section as below */
         $.ajax({
-            type: POST,
+            type: 'POST',
             url: 'http://0.0.0.0:5001/api/v1/books/',
             data: JSON.stringify({ book_ids: savedBooksForBookshelf }),
             contentType: 'application/json',
