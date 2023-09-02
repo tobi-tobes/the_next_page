@@ -74,6 +74,7 @@ $(document).ready(function () {
                         'background-position': 'center center'
                     });
                 });
+                $(document).trigger('recommendationsReady');
             }
         });
         if($('#recommendations').hasClass("hidden")) {
@@ -91,10 +92,10 @@ $(document).ready(function () {
         the random book section */
         $.ajax({
             type: 'GET',
-            url: 'http://http://0.0.0.0:5001/api/v1/books/random',
+            url: 'http://0.0.0.0:5001/api/v1/books/random',
             success: function (book) {
                 $('div#random-book').empty()
-                const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-description hidden"><p>${book.description}</p></div></div>`;
+                const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-cover-description hidden"><p>${book.description}</p></div></div>`;
                 $('div#random-book').append(randomBookItem);
                 $(`div#${book.id} .randomized-book-cover`).css({
                     'background-image': `url(${book.cover_image})`,
@@ -102,6 +103,7 @@ $(document).ready(function () {
                     'background-size': 'contain',
                     'background-position': 'center center'
                 });
+                $(document).trigger('randomBookReady');
             }
         });
         if($('#random-book').hasClass("hidden")) {
