@@ -73,9 +73,8 @@ $(document).ready(function () {
                         'background-size': 'contain',
                         'background-position': 'center center'
                     });
-		    console.log(`${element.description}`);
                 });
-                $(document).trigger('recommendationsReady');
+		$(document).trigger('recommendationsReady');
             }
         });
         if($('#recommendations').hasClass("hidden")) {
@@ -90,21 +89,22 @@ $(document).ready(function () {
 
     $('.pick-a-random-book').on('click', function () {
         /* Make API call to retrieve random book from the database before revealing
-        the random book section */
+           the random book section */
         $.ajax({
             type: 'GET',
             url: 'http://0.0.0.0:5001/api/v1/books/random',
             success: function (book) {
-                $('div#random-book').empty()
+		console.log(`${book.id}`);
                 const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-cover-description hidden"><p>${book.description}</p></div></div>`;
-                $('div#random-book').append(randomBookItem);
-                $(`div#${book.id} .randomized-book-cover`).css({
+                $('#random-book').append(randomBookItem);
+                $(`#random-book #${book.id} .randomized-book-cover`).css({
                     'background-image': `url(${book.cover_image})`,
                     'background-repeat': 'no-repeat',
                     'background-size': 'contain',
                     'background-position': 'center center'
                 });
                 $(document).trigger('randomBookReady');
+		console.log('I\'m here!');
             }
         });
         if($('#random-book').hasClass("hidden")) {

@@ -1,10 +1,14 @@
 $(document).ready(function () {
     $(document).on('bookshelfReady', function () {
+	$('body').off('click', '.bookshelf-book-cover');
         $('body').on('click', '.bookshelf-book-cover', function () {
             const bookDescription = $(this).siblings('.bookshelf-book-cover-description');
             bookDescription.toggleClass("hidden");
-            bookDescription.toggleClass("book-description");
+            bookDescription.toggleClass("bookshelf-book-description");
+	    console.log('book clicked');
         });
+
+	$('body').off('click', '.bookshelf-book .options .remove');
 
         $('.bookshelf-book .options .remove').on('click', function () {
             const grandparentID = $(this).closest('.bookshelf-book').attr('id');
