@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """The User module
 """
+from hashlib import md5
+
 from .base_model import BaseModel, Base
 from models import storage_type
 from sqlalchemy import Column, String
@@ -32,3 +34,11 @@ class User(BaseModel, Base):
         last_name = ""
         email = ""
         password = ""
+
+    def __init__(self, *args, **kwargs):
+        """Initializes a new User instance
+        """
+        if kwargs and "password" in kwargs:
+            passwd = md5(kwargs["password"].encode('utf-8')).hexdigest()
+            kwargs["password"] = passwd
+        super().__init__(*args, **kwargs)

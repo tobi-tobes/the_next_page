@@ -5,7 +5,8 @@ from datetime import date
 
 from .base_model import BaseModel, Base
 from models import storage_type
-from sqlalchemy import Column, String, Integer, Boolean, Date, ForeignKey, Table
+from sqlalchemy import Column, String, Integer, Boolean, Date, ForeignKey
+from sqlalchemy import Table
 from sqlalchemy.orm import relationship
 
 if storage_type == "db":

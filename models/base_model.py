@@ -55,7 +55,7 @@ class BaseModel:
         models.storage.new(self)
         models.storage.save()
 
-    def to_dict(self):
+    def to_dict(self, store=models.storage_type):
         """Returns a dictionary containing all keys/values of the instance's
         __dict__ attribute
         """
@@ -67,6 +67,8 @@ class BaseModel:
         if "pub_date" in new_dict:
             new_dict["pub_date"] = self.pub_date.isoformat()
         new_dict.pop("_sa_instance_state", None)
+        if store == "db":
+            new_dict.pop("password", None)
 
         return new_dict
 
