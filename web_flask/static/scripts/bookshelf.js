@@ -33,18 +33,34 @@ $(document).ready(function () {
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF();
-            const content = document.querySelector('.bookshelf-books');
 
-            pdf.html(content, {
-                callback: function(pdf) {
-                    // Save the PDF
-                    pdf.save('my_bookshelf.pdf');
-                },
-                x: 15,
-                y: 15,
-                width: 170, //target width in the PDF document
-                windowWidth: 650 //window width in CSS pixels
-            });
-        }
+	    let left = 20;
+	    let top = 20;
+	    let lineHeight = 10;
+
+	    const bookshelfBooks = document.querySelectorAll('.bookshelf-book');
+
+	    bookshelfBooks.forEach(function(book, index) {
+		const title = book.querySelector('h3').textContent;
+		const author = book.querySelector('h4').textContent;
+		const description = book.querySelector('p').textContent;
+
+		pdf.text(title, left, top);
+		top += lineHeight;
+
+		pdf.text(author, left, top);
+		top += lineHeight;
+
+		pdf.text(description, left, top, { maxWidth: 170 });
+		let textHeight = pdf.getTextDimensions(description, { maxWidth: 170 }).h;
+		top += textHeight + lineHeight;
+
+		if(index < bookshelfBooks.length - 1) {
+		    top += lineHeight;
+		    pdf.line(left, top, 210 - left, top);
+		}
+	    });
+	    pdf.save('my-bookshelf.pdf');
+	}
     });
 });
