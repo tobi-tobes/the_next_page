@@ -39,7 +39,12 @@ $(document).ready(function () {
 	    let lineHeight = 10;
 
 	    const bookshelfBooks = document.querySelectorAll('.bookshelf-book');
+	    pdf.setFontSize(20);
+	    pdf.setFont('helvetica', 'bold');
+	    pdf.text("Your Bookshelf:", 20, 10);
 
+	    pdf.setFontSize(16);
+	    pdf.setFont('helvetica', 'normal');
 	    bookshelfBooks.forEach(function(book, index) {
 		const title = book.querySelector('h3').textContent;
 		const author = book.querySelector('h4').textContent;

@@ -38,38 +38,42 @@ $(document).ready(function () {
         });
 
         $('body').on('click', '.view-your-bookshelf', function () {
-            /* Using the savedBooksForBookshelf arrays, make API call to genres table to populate the
+	    if(savedBooksForBookshelf.length === 0) {
+		alert("Please select the recommendations you like by clicking on the heart icon under a book recommendation.");
+	    } else {
+		/* Using the savedBooksForBookshelf arrays, make API call to genres table to populate the
             bookshelf section before revealing the section as below */
-            $.ajax({
-                type: 'POST',
-                url: 'http://0.0.0.0:5001/api/v1/books/',
-                data: JSON.stringify({ book_ids: savedBooksForBookshelf }),
-                contentType: 'application/json',
-                success: function (bookshelf) {
-                    $('div.bookshelf-books').empty()
-		    console.log('bookshelf emptied');
-                    $.each(bookshelf, function(index, element) {
-                        const bookshelfBookItem = `<div class="bookshelf-book" id="${element.id}"><div class="bookshelf-book-cover"></div><div class="bookshelf-book-cover-description hidden"><h3>${element.title}</h3><h4>${element.author}</h4><p>${element.description}</p></div><div class="options"><div class="remove"></div></div></div>`;
-                        $('div.bookshelf-books').append(bookshelfBookItem);
-                        $(`div#${element.id} .bookshelf-book-cover`).css({
-                            'background-image': `url(${element.cover_image})`,
-                            'background-repeat': 'no-repeat',
-                            'background-size': 'contain',
-                            'background-position': 'center center'
-                        });
-                    });
-                    $(document).trigger('bookshelfReady');
-		    $('body').off('click', '.book-cover');
-		    $('body').off('click', '.recommended-book .options .like');
-		    $('body').off('click', '.recommended-book .options .not-like');
-		    savedBooksForBookshelf.splice(0, savedBooksForBookshelf.length);
-		    console.log(`${savedBooksForBookshelf}`);
-                }
-            });
-            if($('#bookshelf').hasClass("hidden")) {
-                $('#bookshelf').removeClass("hidden");
-                $('#bookshelf').addClass("bookshelf-section");
-            }
+		$.ajax({
+                    type: 'POST',
+                    url: 'http://0.0.0.0:5001/api/v1/books/',
+                    data: JSON.stringify({ book_ids: savedBooksForBookshelf }),
+                    contentType: 'application/json',
+                    success: function (bookshelf) {
+			$('div.bookshelf-books').empty()
+			console.log('bookshelf emptied');
+			$.each(bookshelf, function(index, element) {
+                            const bookshelfBookItem = `<div class="bookshelf-book" id="${element.id}"><div class="bookshelf-book-cover"></div><div class="bookshelf-book-cover-description hidden"><h3>${element.title}</h3><h4>${element.author}</h4><p>${element.description}</p></div><div class="options"><div class="remove"></div></div></div>`;
+                            $('div.bookshelf-books').append(bookshelfBookItem);
+                            $(`div#${element.id} .bookshelf-book-cover`).css({
+				'background-image': `url(${element.cover_image})`,
+				'background-repeat': 'no-repeat',
+				'background-size': 'contain',
+				'background-position': 'center center'
+                            });
+			});
+			$(document).trigger('bookshelfReady');
+			$('body').off('click', '.book-cover');
+			$('body').off('click', '.recommended-book .options .like');
+			$('body').off('click', '.recommended-book .options .not-like');
+			savedBooksForBookshelf.splice(0, savedBooksForBookshelf.length);
+			console.log(`${savedBooksForBookshelf}`);
+                    }
+		});
+		if($('#bookshelf').hasClass("hidden")) {
+                    $('#bookshelf').removeClass("hidden");
+                    $('#bookshelf').addClass("bookshelf-section");
+		}
+	    }
         });
     });
 });

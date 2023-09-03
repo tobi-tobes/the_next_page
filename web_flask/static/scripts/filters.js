@@ -17,21 +17,21 @@ $(document).ready(function () {
                         const topicItem = `<li class="popover-option ${element.parent_genre}"><input type="checkbox" data-id=${element.id}>${element.name}</li>`;
                         $('div.topic-filters ul').append(topicItem);
                     });
+		    $('.topic-filters input[type="checkbox"]').change(function () {
+			if($(this).is(':checked')) {
+			    checkedTopics.push($(this).data('id'));
+			} else {
+			    const index = checkedTopics.indexOf($(this).data('id'));
+			    checkedTopics.splice(index, 1);
+			}
+			console.log(`${checkedTopics}`);
+		    });
                 }
             });
         } else {
             const index = checkedGenres.indexOf($(this).data('name'));
             checkedGenres.splice(index, 1);
             $('li.' + $(this).data('name')).remove();
-        }
-    });
-
-    $('.topic-filters input[type="checkbox"]').change(function () {
-        if($(this).is(':checked')) {
-            checkedTopics.push($(this).data('id'));
-        } else {
-            const index = checkedTopics.indexOf($(this).data('id'));
-            checkedTopics.splice(index, 1);
         }
     });
 
@@ -58,6 +58,8 @@ $(document).ready(function () {
         /* Using the checkedTopics, checkedBookLengths, and checkedAgeCategories arrays,
         API call to genres table to populate the recommendations section before revealing
         the section as below */
+	const requestBody = {"age_categories": checkedAgeCategories, "book_lengths": checkedBookLengths, "genres": checkedTopics};
+	console.log(requestBody);
         $.ajax({
             type: 'POST',
             url: 'http://0.0.0.0:5001/api/v1/recommended_books/',
