@@ -51,6 +51,7 @@ $(document).ready(function () {
             const index = checkedBookLengths.indexOf($(this).data('name'));
             checkedBookLengths.splice(index, 1);
         }
+	console.log(`${checkedBookLengths}`);
     });
 
     $('.get-your-recommendations').on('click', function () {
