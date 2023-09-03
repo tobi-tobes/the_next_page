@@ -66,7 +66,7 @@ $(document).ready(function () {
             success: function (recommendedBooks) {
                 $('div.recommended-books').empty()
                 $.each(recommendedBooks, function(index, element) {
-                    const recommendedBookItem = `<div class="recommended-book" id="${element.id}"><div class="book-cover"></div><div class="book-cover-description hidden"><p>${element.description}</p></div><div class="options"><div class="like"></div><div class="not-like"></div></div></div>`;
+                    const recommendedBookItem = `<div class="recommended-book" id="${element.id}"><div class="book-cover"></div><div class="book-cover-description hidden"><h3>${element.title}</h3><h4>${element.author}</h4><p>${element.description}</p></div><div class="options"><div class="like"></div><div class="not-like"></div></div></div>`;
                     $('div.recommended-books').append(recommendedBookItem);
                     $(`div#${element.id} .book-cover`).css({
                         'background-image': `url(${element.cover_image})`,
@@ -97,7 +97,7 @@ $(document).ready(function () {
             success: function (book) {
 		$('.randomized-book').remove()
 		$('.pick-a-new-random-book').remove()
-                const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-cover-description hidden"><p>${book.description}</p></div></div>`;
+                const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-cover-description hidden"><h3>${book.title}</h3><h4>${book.author}</h4><p>${book.description}</p></div></div>`;
                 $('#random-book').append(randomBookItem);
                 $(`#random-book #${book.id} .randomized-book-cover`).css({
                     'background-image': `url(${book.cover_image})`,

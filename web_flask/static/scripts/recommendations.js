@@ -49,7 +49,7 @@ $(document).ready(function () {
                     $('div.bookshelf-books').empty()
 		    console.log('bookshelf emptied');
                     $.each(bookshelf, function(index, element) {
-                        const bookshelfBookItem = `<div class="bookshelf-book" id="${element.id}"><div class="bookshelf-book-cover"></div><div class="bookshelf-book-cover-description hidden"><p>${element.description}</p></div><div class="options"><div class="remove"></div></div></div>`;
+                        const bookshelfBookItem = `<div class="bookshelf-book" id="${element.id}"><div class="bookshelf-book-cover"></div><div class="bookshelf-book-cover-description hidden"><h3>${element.title}</h3><h4>${element.author}</h4><p>${element.description}</p></div><div class="options"><div class="remove"></div></div></div>`;
                         $('div.bookshelf-books').append(bookshelfBookItem);
                         $(`div#${element.id} .bookshelf-book-cover`).css({
                             'background-image': `url(${element.cover_image})`,

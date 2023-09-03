@@ -15,7 +15,7 @@ $(document).ready(function () {
                 success: function (book) {
                     $('.randomized-book').remove()
 		    $('.pick-a-new-random-book').remove()
-                    const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-cover-description hidden"><p>${book.description}</p></div></div>`;
+                    const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-cover-description hidden"><h3>${book.title}</h3><h4>${book.author}</h4><p>${book.description}</p></div></div>`;
                     $('#random-book').append(randomBookItem);
                     $(`#random-book #${book.id} .randomized-book-cover`).css({
                         'background-image': `url(${book.cover_image})`,
