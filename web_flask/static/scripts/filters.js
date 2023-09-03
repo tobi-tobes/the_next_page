@@ -66,28 +66,32 @@ $(document).ready(function () {
             data: JSON.stringify({ age_categories: checkedAgeCategories, book_lengths: checkedBookLengths, genres: checkedTopics }),
             contentType: 'application/json',
             success: function (recommendedBooks) {
-                $('div.recommended-books').empty()
-                $.each(recommendedBooks, function(index, element) {
-                    const recommendedBookItem = `<div class="recommended-book" id="${element.id}"><div class="book-cover"></div><div class="book-cover-description hidden"><h3>${element.title}</h3><h4>${element.author}</h4><p>${element.description}</p></div><div class="options"><div class="like"></div><div class="not-like"></div></div></div>`;
-                    $('div.recommended-books').append(recommendedBookItem);
-                    $(`div#${element.id} .book-cover`).css({
-                        'background-image': `url(${element.cover_image})`,
-                        'background-repeat': 'no-repeat',
-                        'background-size': 'contain',
-                        'background-position': 'center center'
+		if(recommendedBooks.length === 0) {
+		    alert("No books matched your query, please try again.");
+		} else {
+		    $('div.recommended-books').empty()
+                    $.each(recommendedBooks, function(index, element) {
+			const recommendedBookItem = `<div class="recommended-book" id="${element.id}"><div class="book-cover"></div><div class="book-cover-description hidden"><h3>${element.title}</h3><h4>${element.author}</h4><p>${element.description}</p></div><div class="options"><div class="like"></div><div class="not-like"></div></div></div>`;
+			$('div.recommended-books').append(recommendedBookItem);
+			$(`div#${element.id} .book-cover`).css({
+                            'background-image': `url(${element.cover_image})`,
+                            'background-repeat': 'no-repeat',
+                            'background-size': 'contain',
+                            'background-position': 'center center'
+			});
                     });
-                });
-		$(document).trigger('recommendationsReady');
-            }
+		    $(document).trigger('recommendationsReady');
+		    if($('#recommendations').hasClass("hidden")) {
+			$('#recommendations').removeClass("hidden");
+			$('#recommendations').addClass("recommendations-section");
+		    }
+		    if($('#random-book').hasClass("random-book-section")) {
+			$('#random-book').removeClass("random-book-section");
+			$('#random-book').addClass("hidden");
+		    }
+		}
+	    }
         });
-        if($('#recommendations').hasClass("hidden")) {
-            $('#recommendations').removeClass("hidden");
-            $('#recommendations').addClass("recommendations-section");
-        }
-        if($('#random-book').hasClass("random-book-section")) {
-            $('#random-book').removeClass("random-book-section");
-            $('#random-book').addClass("hidden");
-        }
     });
 
     $('.pick-a-random-book').on('click', function () {
