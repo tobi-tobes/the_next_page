@@ -3,7 +3,7 @@
 from models import storage
 from api.v1.views import app_views
 from os import environ
-from flask import Flask, render_template, make_response, jsonify
+from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -30,12 +30,6 @@ def not_found(error):
 
 if __name__ == "__main__":
     """ Main Function """
-    host = environ.get('TNP_API_HOST')
-    port = environ.get('TNP_API_PORT')
-
-    if not host:
-        host = '0.0.0.0'
-    if not port:
-        port = '5000'
-
+    host = environ.get('TNP_API_HOST', default='0.0.0.0')
+    port = environ.get('TNP_API_PORT', default='5000')
     app.run(host=host, port=port, threaded=True)

@@ -3,7 +3,7 @@
 from models.book import Book
 from models import storage
 from api.v1.views import app_views
-from flask import abort, jsonify, make_response, request
+from flask import abort, jsonify, request
 from random import randint
 
 
@@ -12,18 +12,17 @@ def get_random_book():
     """
     retrieves a random book from the database
     """
-
-    """ Retrieve all books from database """
+    # Retrieve all books from database
     all_books = list(storage.all(Book).values())
 
-    """ Find the length of the list to use as range for randint """
+    # Find the length of the list to use as range for randint
     length = len(all_books)
 
-    """ Use randint to pick a random index to retrieve a random book """
+    # Use randint to pick a random index to retrieve a random book
     random_idx = randint(0, length - 1)
     random_book = all_books[random_idx]
 
-    """ Return random book """
+    # Return random book
     return jsonify(random_book.to_dict())
 
 
@@ -45,7 +44,7 @@ def get_books_list():
 
     books_list = []
 
-    """ Iterate through book_ids and retrieve books """
+    # Iterate through book_ids and retrieve books
     for book_id in book_ids_list:
         book = storage.get(Book, book_id)
         books_list.append(book.to_dict())
