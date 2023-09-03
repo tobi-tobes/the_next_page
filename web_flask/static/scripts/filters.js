@@ -94,7 +94,8 @@ $(document).ready(function () {
             type: 'GET',
             url: 'http://0.0.0.0:5001/api/v1/books/random',
             success: function (book) {
-		console.log(`${book.id}`);
+		$('.randomized-book').remove()
+		$('.pick-a-new-random-book').remove()
                 const randomBookItem = `<div class="randomized-book" id="${book.id}"><div class="randomized-book-cover"></div><div class="randomized-book-cover-description hidden"><p>${book.description}</p></div></div>`;
                 $('#random-book').append(randomBookItem);
                 $(`#random-book #${book.id} .randomized-book-cover`).css({
@@ -103,6 +104,7 @@ $(document).ready(function () {
                     'background-size': 'contain',
                     'background-position': 'center center'
                 });
+		$('#random-book').append('<button class="pick-a-new-random-book"><a href="#random-book">Pick a new random book!</a></button>');
                 $(document).trigger('randomBookReady');
 		console.log('I\'m here!');
             }
