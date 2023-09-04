@@ -3,7 +3,7 @@
 from models.genre import Genre
 from models import storage
 from api.v1.views import app_views
-from flask import abort, jsonify, make_response, request
+from flask import jsonify
 
 
 @app_views.route('/genres/<parent_genre>', methods=['GET'],
