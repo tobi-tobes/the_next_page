@@ -11,7 +11,7 @@ $(document).ready(function () {
             the random book section */
             $.ajax({
                 type: 'GET',
-                url: 'http://0.0.0.0:5001/api/v1/books/random/',
+                url: 'http://54.82.111.149:5001/api/v1/books/random/',
                 success: function (book) {
                     $('.randomized-book').remove()
 		    $('.pick-a-new-random-book').remove()

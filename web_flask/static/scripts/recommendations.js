@@ -45,7 +45,7 @@ $(document).ready(function () {
             bookshelf section before revealing the section as below */
 		$.ajax({
                     type: 'POST',
-                    url: 'http://0.0.0.0:5001/api/v1/books/',
+                    url: 'http://54.82.111.149:5001/api/v1/books/',
                     data: JSON.stringify({ book_ids: savedBooksForBookshelf }),
                     contentType: 'application/json',
                     success: function (bookshelf) {

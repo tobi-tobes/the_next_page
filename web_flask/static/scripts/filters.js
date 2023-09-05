@@ -11,7 +11,7 @@ $(document).ready(function () {
             topic-filters dropdown menu */
             $.ajax({
                 type: 'GET',
-                url: 'http://0.0.0.0:5001/api/v1/genres/' + $(this).data('name'),
+                url: 'http://54.82.111.149:5001/api/v1/genres/' + $(this).data('name'),
                 success: function (topics) {
                     $.each(topics, function(index, element) {
                         const topicItem = `<li class="popover-option ${element.parent_genre}"><input type="checkbox" data-id=${element.id}>${element.name}</li>`;
@@ -62,7 +62,7 @@ $(document).ready(function () {
 	console.log(requestBody);
         $.ajax({
             type: 'POST',
-            url: 'http://0.0.0.0:5001/api/v1/recommended_books/',
+            url: 'http://54.82.111.149:5001/api/v1/recommended_books/',
             data: JSON.stringify({ age_categories: checkedAgeCategories, book_lengths: checkedBookLengths, genres: checkedTopics }),
             contentType: 'application/json',
             success: function (recommendedBooks) {
@@ -99,7 +99,7 @@ $(document).ready(function () {
            the random book section */
         $.ajax({
             type: 'GET',
-            url: 'http://0.0.0.0:5001/api/v1/books/random',
+            url: 'http://54.82.111.149:5001/api/v1/books/random',
             success: function (book) {
 		$('.randomized-book').remove()
 		$('.pick-a-new-random-book').remove()
