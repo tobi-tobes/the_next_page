@@ -121,4 +121,27 @@ $(document).ready(function () {
             $('#random-book').addClass("random-book-section");
         }
     });
+
+    $('body').on('click', '.get-new-recommendations', function () {
+	checkedGenres.length = 0;
+	checkedTopics.length = 0;
+	checkedBookLengths.length = 0;
+	checkedAgeCategories.length = 0;
+
+	$('.genre-filters input[type="checkbox"]').prop('checked', false);
+	$('.topic-filters input[type="checkbox"]').prop('checked', false);
+	$('.age-category-filters input[type="checkbox"]').prop('checked', false);
+	$('.book-length-filters input[type="checkbox"]').prop('checked', false);
+
+	$('div.topic-filters ul').empty();
+
+	if($('#recommendations').hasClass("recommendations-section")) {
+	    $('#recommendations').removeClass("recommendations-section");
+            $('#recommendations').addClass("hidden");
+        }
+        if($('#bookshelf').hasClass("bookshelf-section")) {
+            $('#bookshelf').removeClass("bookshelf-section");
+            $('#bookshelf').addClass("hidden");
+        }
+    });
 });
