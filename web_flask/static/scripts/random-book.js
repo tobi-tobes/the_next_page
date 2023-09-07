@@ -6,9 +6,10 @@ $(document).ready(function () {
             $('.randomized-book-cover-description').toggleClass("randomized-book-description");
         });
 
+	$('body').off('click', '.pick-a-new-random-book');
         $('body').on('click', '.pick-a-new-random-book', function () {
-            /* Make API call to retrieve random book from the database before revealing
-            the random book section */
+            /* Make API call to retrieve random book from the database before revealing the random book section */
+	    console.log("Got a new random book");
             $.ajax({
                 type: 'GET',
                 url: 'http://54.82.111.149:5001/api/v1/books/random/',
