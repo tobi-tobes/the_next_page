@@ -43,11 +43,6 @@ $(document).ready(function () {
 		const author = book.querySelector('h4').textContent;
 		const description = book.querySelector('p').textContent;
 
-		if(top + lineHeight * 5 > pageHeight) {
-		    pdf.addPage();
-		    top = 30;
-		}
-
 		pdf.text(title, left, top);
 		top += lineHeight;
 
@@ -59,8 +54,9 @@ $(document).ready(function () {
 		top += textHeight + lineHeight;
 
 		if(index < bookshelfBooks.length - 1) {
-		    top += lineHeight;
+		    top = 30;
 		    pdf.line(left, top, pageWidth - left, top);
+		    pdf.addPage();
 		}
 	    });
 	    pdf.save('my-bookshelf.pdf');
