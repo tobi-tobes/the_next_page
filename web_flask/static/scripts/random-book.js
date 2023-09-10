@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(document).on('randomBookReady', function () {
+        /* Reveal book description when book cover is clicked */
 	$('body').off('click', '.randomized-book-cover')
         $('body').on('click', '.randomized-book-cover', function () {
             $('.randomized-book-cover-description').toggleClass("hidden");

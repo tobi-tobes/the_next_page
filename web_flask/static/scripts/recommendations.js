@@ -1,6 +1,7 @@
 $(document).ready(function () {
     const savedBooksForBookshelf = [];
     $(document).on('recommendationsReady', function () {
+        /* Reveal book description when book cover is clicked */
 	$('body').off('click', '.book-cover')
 	$('body').on('click', '.book-cover', function () {
 	    const bookDescription = $(this).siblings('.book-cover-description');
@@ -11,6 +12,7 @@ $(document).ready(function () {
 
 	$('body').off('click','.recommended-book .options .like')
         $('body').on('click','.recommended-book .options .like', function () {
+            /* Add or remove recommended book from bookshelf when heart icon is clicked */
             const grandparentID = $(this).closest('.recommended-book').attr('id');
             if(!savedBooksForBookshelf.includes(grandparentID)) {
                 savedBooksForBookshelf.push(grandparentID);
@@ -26,6 +28,7 @@ $(document).ready(function () {
 
 	$('body').off('click', '.recommended-book .options .not-like')
         $('body').on('click', '.recommended-book .options .not-like', function () {
+            /* Remove book from recommended list when garbage can is clicked */
             const grandparentID = $(this).closest('.recommended-book').attr('id');
             $('#' + grandparentID).animate({ opacity: 0 }, 500, function() {
                 $('#' + grandparentID).remove();

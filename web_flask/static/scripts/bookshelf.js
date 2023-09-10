@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(document).on('bookshelfReady', function () {
+		/* Reveal book description when book cover is clicked */
 	$('body').off('click', '.bookshelf-book-cover');
         $('body').on('click', '.bookshelf-book-cover', function () {
             const bookDescription = $(this).siblings('.bookshelf-book-cover-description');
@@ -11,6 +12,7 @@ $(document).ready(function () {
 	$('body').off('click', '.bookshelf-book .options .remove');
 
         $('.bookshelf-book .options .remove').on('click', function () {
+			/* Remove book from bookshelf when X icon is clicked */
             const grandparentID = $(this).closest('.bookshelf-book').attr('id');
             $('#' + grandparentID).animate({ opacity: 0 }, 500, function() {
                 $('#' + grandparentID).remove();
@@ -19,6 +21,7 @@ $(document).ready(function () {
 
 	$('body').off('click', '.download-your-bookshelf');
 	$('body').on('click', '.download-your-bookshelf', generatePDF);
+	/* Configuration to download bookshelf as PDF */
 
         function generatePDF() {
             const { jsPDF } = window.jspdf;

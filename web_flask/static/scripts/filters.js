@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    /* Arrays for the requests to be sent */
     const checkedGenres = [];
     const checkedTopics = [];
     const checkedBookLengths = [];
@@ -18,6 +19,7 @@ $(document).ready(function () {
                         $('div.topic-filters ul').append(topicItem);
                     });
 		    $('.topic-filters input[type="checkbox"]').change(function () {
+            /* Actions for topic-filters button */
 			if($(this).is(':checked')) {
 			    checkedTopics.push($(this).data('id'));
 			} else {
@@ -36,6 +38,7 @@ $(document).ready(function () {
     });
 
     $('.age-category-filters input[type="checkbox"]').change(function () {
+        /* Actions for age-category-filters button */
         if($(this).is(':checked')) {
             checkedAgeCategories.push($(this).data('name'));
         } else {
@@ -45,6 +48,7 @@ $(document).ready(function () {
     });
 
     $('.book-length-filters input[type="checkbox"]').change(function () {
+        /* Actions for book-length-filters button */
         if($(this).is(':checked')) {
             checkedBookLengths.push($(this).data('name'));
         } else {
@@ -67,6 +71,7 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (recommendedBooks) {
 		if(recommendedBooks.length === 0) {
+            /* If no books matched the query */
 		    alert("No books matched your query, please try again.");
 		} else {
 		    $('div.recommended-books').empty()
@@ -123,6 +128,8 @@ $(document).ready(function () {
     });
 
     $('body').on('click', '.get-new-recommendations', function () {
+        /* Actions when get-new-recommendations button is clicked
+        to restart the workflow */
 	checkedGenres.length = 0;
 	checkedTopics.length = 0;
 	checkedBookLengths.length = 0;
