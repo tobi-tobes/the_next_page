@@ -1,4 +1,4 @@
-# The Next Page - A Free Book Recommendations Website
+# *The Next Page* - A Free Book Recommendations Website
 
 ![The Next Page Homepage](https://i.imgur.com/KBAviT9.png)
 
@@ -7,7 +7,7 @@
     * [The Project](#the-project)
     * [The Team](#the-team)
     * [Blog Posts](#blog-posts)
-    * [Visit The Next Page](#visit-the-next-page)
+    * [Visit *The Next Page*](#visit-the-next-page)
 - [Getting Technical](#getting-technical)
     * [Overview and Story](#overview-and-story)
     * [Features](#features)
@@ -25,19 +25,19 @@
 
 ## Introduction
 ### The Project
-The Next Page is the ALX Foundations Portfolio Project of Oluwaseyi Salami and Oluwatobi Tijani. The aim of the project is to foster a love of reading and make it easier for people to discover new books based on what they already love to read or because they're in the mood to try something new.
+*The Next Page* is the ALX Foundations Portfolio Project of Oluwaseyi Salami and Oluwatobi Tijani. The aim of the project is to foster a love of reading and make it easier for people to discover new books based on what they already love to read or because they're in the mood to try something new.
 
 ### The Team
 - Oluwatobi Tijani (Front end): [Github](https://github.com/tobi-tobes), [LinkedIn](https://www.linkedin.com/in/oluwatobi-tijani/)
 - Oluwaseyi Salami (Back end): [Github](https://github.com/Pinerealm), [LinkedIn](https://www.linkedin.com/in/osalami/)
 
 ### Blog Posts
-After the development stage of the project, we wrote a blog post to reflect on our journey building The Next Page. Check out the article here:
+After the development stage of the project, we wrote a blog post to reflect on our journey building *The Next Page*. Check out the article here:
 - Oluwatobi's article: 
 - Oluwaseyi's article:
 
-### Visit The Next Page
-The Next Page is free and easy to use; no login required! Visit it here: [The Next Page](http://project.web-osalami.tech/the_next_page/)
+### Visit *The Next Page*
+*The Next Page* is free and easy to use; no login required! Visit it here: [*The Next Page*](http://project.web-osalami.tech/the_next_page/)
 
 ## Getting Technical
 ### Overview and Story
@@ -74,7 +74,7 @@ Full API route definitions can be found in `api/v1/views/genres.py` and `api/v1/
 
 ![The Next Page Infrastructure](https://i.imgur.com/v3Iheq4.png)
 
-The Next Page is hosted on a server using Nginx and Gunicorn.
+*The Next Page* is hosted on a server using Nginx and Gunicorn.
 
 ### Future Plans
 Future improvements to our project include:
@@ -83,7 +83,7 @@ Future improvements to our project include:
 
 ## Getting Started
 ### Installation
-Run The Next Page from your own system, no internet service required! First of all, you need clone the repository and ensure you have the following dependencies installed:
+Run *The Next Page* from your own system, no internet service required! First of all, you need clone the repository and ensure you have the following dependencies installed:
 - Latest version of Python: `apt install python3`
 - Flask (supports Python 3.8 and newer): `pip3 install Flask`
 - MySQLdb (you need to have MySQL installed `apt install mysql-server`): 
@@ -97,7 +97,7 @@ Once all the necessary dependencies have been installed, navigate to `the_next_p
 
 The next set is to set up your MySQL database. This tutorial assumes you are able to set up a MySQL server and have already configured your `root` user with a password. Run the following script from within `the_next_page` directory to create the database, user, and password for the project: `cat setup_files/setup_mysql_dev.sql | mysql -hlocalhost -uroot -p`.
 
-Once that is done, you can import some objects into the database using the Python script (`data_for_tnp_database.py`) in the `setup_files` directory. The Next Page is supposed to be run by retrieving data using the Google Books API but we are still working on making that feature seamless. Until then, you can upload books to the database manually with the given script using the following command: 
+Once that is done, you can import some objects into the database using the Python script (`data_for_tnp_database.py`) in the `setup_files` directory. *The Next Page* is supposed to be run by retrieving data using the Google Books API but we are still working on making that feature seamless. Until then, you can upload books to the database manually with the given script using the following command: 
 `TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db setup_files/data_for_tnp_database.py`.
 
 The script already has book and genre objects defined within; feel free to add as many more books as you'd like!
@@ -110,19 +110,19 @@ To run the main applicationm, use the following command:
 
 You can run both concurrently on multiple terminals using `tmux`; install with the following command: `apt-get install tmux`, then simply call `tmux` in your terminal. Use `Ctrl + B + "` to split the pane horizontally or `Ctrl + B + %` to split the pane vertically. Use `Ctrl + B + arrow keys` to navigate between panes and run the commands for the API and the application.
 
-Whew! We're almost done here. The last thing to do is navigate to your browser and open `localhost:5000/the_next_page`, and this will allow you to try out The Next Page! Have fun!
+Whew! We're almost done here. The last thing to do is navigate to your browser and open `localhost:5000/the_next_page`, and this will allow you to try out *The Next Page*! Have fun!
 
 ### Usage
-You can also access The Next Page directly from the web using the link in the Introduction Section. Here's a breakdown of how to navigate the website:
+You can also access *The Next Page* directly from the web using the link in the Introduction Section. Here's a breakdown of how to navigate the website:
 - First, click on the filters to narrow down your recommendations. ![The Next Page Filters section](https://i.imgur.com/GjYeGHN.png)
 - Next, click on the "Get your recommendations" button to view your recommendations. You can also click on "Pick a random book" to select a random book. Click on the book cover to get the book description. ![The Next Page Recommendations section](https://i.imgur.com/MOMQoo6.png)
 - View your recommendations in the final section. Here, you can choose to download your recommendations or start from the beginning to get new recommendations. ![The Next Page Bookshelf section](https://i.imgur.com/Bux5SnI.png)
 
 ## Tools Used
-- Front-end: 
+- **Front-end**: 
     * HTML/CSS
     * JavaScript/jQuery (front-end language)
-- Back-end:
+- **Back-end**:
     * Python (back-end language)
     * MySQL (database management system)
     * Flask (web development framework)
