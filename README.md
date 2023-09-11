@@ -11,6 +11,7 @@
 - [Getting Technical](#getting-technical)
     * [Overview and Story](#overview-and-story)
     * [Features](#features)
+    * [The Console](#the-console)
     * [The Database Schema](#the-database-schema)
     * [RESTful API](#restful-api)
     * [Server/Deployment](#serverdeployment)
@@ -53,6 +54,16 @@ For the back end, we used plain Python as well as the Flask web framework for th
 
 ### Features
 The website has a filters section where the user can choose amongst various options to narrow down their recommendations. If no filters are selected, all the books in the database will be retrieved, which allows the user to view all the books on the system. Users can view their recommendations and also click on the book cover to view the book description. We had originally wanted the "bookshelf" portion of the site, which is basically a collection of recommendations that the user has saved, to only be accessible to users who have an account and are logged in. However, for this SPA version of the site, we opted instead for a download feature where a user can download a PDF version of their saved recommendations for future reference. There's also a "random book" feature, where a user can get a random book recommendation from the system, in case they don't have any particular thing they're looking for, so it's much like a fun surprise what they're going to get!
+
+### The Console
+The console is a command interpreter that manages *The Next Page* objects. It is written in Python using the `cmd` module. The console allows you to:
+- Create a new object
+- Retrieve an object from a file, a database etc
+- Do operations on objects
+- Update attributes of an object
+- Destroy an object
+
+The console can be run interactively or non-interactively and can utilize either File Storage or Database Storage. To run the console in interactive mode, run `./console.py`. To run the console in non-interactive mode, `echo "<command>" | ./console.py`. Valid commands for the console include `create <class>`, `show <class> <object_id>`, `update <class> <object_id>`and `destroy <class> <object_id>`. Within the console, run `help <command>` for more information on each command.
 
 ### The Database Schema
 
@@ -97,7 +108,12 @@ Once all the necessary dependencies have been installed, navigate to `the_next_p
 
 The next set is to set up your MySQL database. This tutorial assumes you are able to set up a MySQL server and have already configured your `root` user with a password. Run the following script from within `the_next_page` directory to create the database, user, and password for the project: `cat setup_files/setup_mysql_dev.sql | mysql -hlocalhost -uroot -p`.
 
-Once that is done, you can import some objects into the database using the Python script (`data_for_tnp_database.py`) in the `setup_files` directory. *The Next Page* is supposed to be run by retrieving data using the Google Books API but we are still working on making that feature seamless. Until then, you can upload books to the database manually with the given script using the following command: 
+Once that is done, you can import some objects into the database using the Python script (`data_for_tnp_database.py`) in the `setup_files` directory. *The Next Page* is supposed to be run by retrieving data using the Google Books API but we are still working on making that feature seamless. Until then, you can upload books to the database manually with the given script.
+
+First make sure that all tables are created when you run the following script:
+`echo "quit" | TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db ./console.py`.
+
+Then run the Python script using the following command: 
 `TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db setup_files/data_for_tnp_database.py`.
 
 The script already has book and genre objects defined within; feel free to add as many more books as you'd like!
