@@ -63,7 +63,9 @@ The console is a command interpreter that manages *The Next Page* objects. It is
 - Update attributes of an object
 - Destroy an object
 
-The console can be run interactively or non-interactively and can utilize either File Storage or Database Storage. To run the console in interactive mode, run `./console.py`. To run the console in non-interactive mode, `echo "<command>" | ./console.py`. Valid commands for the console include `create <class>`, `show <class> <object_id>`, `update <class> <object_id>`and `destroy <class> <object_id>`. Within the console, run `help <command>` for more information on each command.
+The console can be run interactively or non-interactively and can utilize either File Storage or Database Storage. To run the console in interactive mode, run `./console.py`. To run the console in non-interactive mode, `echo "<command>" | ./console.py`. Valid commands for the console include `create <class>`, `show <class> <object_id>`, `update <class> <object_id>`and `destroy <class> <object_id>`.
+
+Within the console, run `help <command>` for more information on each command.
 
 ### The Database Schema
 
@@ -106,23 +108,29 @@ Run *The Next Page* from your own system, no internet service required! First of
 
 Once all the necessary dependencies have been installed, navigate to `the_next_page` directory (`cd the_next_page`).
 
-The next set is to set up your MySQL database. This tutorial assumes you are able to set up a MySQL server and have already configured your `root` user with a password. Run the following script from within `the_next_page` directory to create the database, user, and password for the project: `cat setup_files/setup_mysql_dev.sql | mysql -hlocalhost -uroot -p`.
+The next set is to set up your MySQL database. This tutorial assumes you are able to set up a MySQL server and have already configured your `root` user with a password. Run the following script from within `the_next_page` directory to create the database, user, and password for the project: 
+
+`cat setup_files/setup_mysql_dev.sql | mysql -hlocalhost -uroot -p`
 
 Once that is done, you can import some objects into the database using the Python script (`data_for_tnp_database.py`) in the `setup_files` directory. *The Next Page* is supposed to be run by retrieving data using the Google Books API but we are still working on making that feature seamless. Until then, you can upload books to the database manually with the given script.
 
 First make sure that all tables are created when you run the following script:
-`echo "quit" | TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db ./console.py`.
+
+```echo "quit" | TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db ./console.py```
 
 Then run the Python script using the following command: 
-`TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db setup_files/data_for_tnp_database.py`.
+
+```TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db setup_files/data_for_tnp_database.py```
 
 The script already has book and genre objects defined within; feel free to add as many more books as you'd like!
 
 Now the database is ready for action! You can now run the API and the main application; both are served by Flask. The API runs on port 5001 while the main application runs on port 5000. To run the the API use the following command:
-`TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db TNP_API_HOST=0.0.0.0 TNP_API_PORT=5001 python3 -m api.v1.app`.
 
-To run the main applicationm, use the following command:
-`TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db TNP_API_HOST=0.0.0.0 TNP_API_PORT=5000 python3 -m web_flask.tnp`.
+```TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db TNP_API_HOST=0.0.0.0 TNP_API_PORT=5001 python3 -m api.v1.app```
+
+To run the main application, use the following command:
+
+```TNP_MYSQL_USER=tnp_dev TNP_MYSQL_PWD=tnp_dev_pwd TNP_MYSQL_HOST=localhost TNP_MYSQL_DB=tnp_dev_db TNP_STORAGE_TYPE=db TNP_API_HOST=0.0.0.0 TNP_API_PORT=5000 python3 -m web_flask.tnp```
 
 You can run both concurrently on multiple terminals using `tmux`; install with the following command: `apt-get install tmux`, then simply call `tmux` in your terminal. Use `Ctrl + B + "` to split the pane horizontally or `Ctrl + B + %` to split the pane vertically. Use `Ctrl + B + arrow keys` to navigate between panes and run the commands for the API and the application.
 
