@@ -116,7 +116,7 @@ Whew! We're almost done here. The last thing to do is navigate to your browser a
 You can also access The Next Page directly from the web using the link in the Introduction Section. Here's a breakdown of how to navigate the website:
 - First, click on the filters to narrow down your recommendations. ![The Next Page Filters section](https://i.imgur.com/GjYeGHN.png)
 - Next, click on the "Get your recommendations" button to view your recommendations. You can also click on "Pick a random book" to select a random book. Click on the book cover to get the book description. ![The Next Page Recommendations section](https://i.imgur.com/MOMQoo6.png)
-- View your recommendations in the final section. Here, you can choose to download your recommendations (coming soon!) or start from the beginning to get new recommendations. ![The Next Page Bookshelf section](https://i.imgur.com/Bux5SnI.png)
+- View your recommendations in the final section. Here, you can choose to download your recommendations or start from the beginning to get new recommendations. ![The Next Page Bookshelf section](https://i.imgur.com/Bux5SnI.png)
 
 ## Tools Used
 - Front-end: 
