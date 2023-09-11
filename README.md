@@ -139,7 +139,8 @@ Your contributions are always welcome! Since we use GitHub Flow, all code change
 
 Some further guidelines:
 - We use GitHub Issues to track bugs. Feel free to report a bug by opening up a new issue. Bug reports should be detailed, including background and sample code.
-Thank you again for thinking of contributing to this project! And many thanks to GitHub user @briandk for the contributing template!
+
+Thank you again for thinking of contributing to this project! And many thanks to GitHub user @briandk for the [contributing template](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62)!
 
 ## Related Projects
 - The AirBnB Clone - [HBNB](http://54.160.124.170/)
