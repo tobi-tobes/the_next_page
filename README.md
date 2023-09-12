@@ -35,7 +35,7 @@
 ### Blog Posts
 After the development stage of the project, we wrote a blog post to reflect on our journey building *The Next Page*. Check out the article here:
 - Oluwatobi's article: [Introducing The Next Page: A Book Recommendations Website](https://medium.com/@tobioreetijani/introducing-the-next-page-a-book-recommendations-website-912aa262cc85)
-- Oluwaseyi's article:
+<!-- - Oluwaseyi's article: -->
 
 ### Visit *The Next Page*
 *The Next Page* is free and easy to use; no login required! Visit it here: [*The Next Page*](http://project.web-osalami.tech/the_next_page/)
