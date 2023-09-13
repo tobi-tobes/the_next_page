@@ -1,4 +1,4 @@
-# *The Next Page* - A Free Book Recommendations Website
+# *The Next Page* - A Book Recommendations Website
 
 ![The Next Page Homepage](https://i.imgur.com/KBAviT9.png)
 
