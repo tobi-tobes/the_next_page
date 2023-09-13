@@ -34,7 +34,7 @@
 
 ### Blog Posts
 After the development stage of the project, we wrote a blog post to reflect on our journey building *The Next Page*. Check out the article here:
-- Oluwatobi's article: [Introducing The Next Page: A Book Recommendations Website](https://medium.com/@tobioreetijani/introducing-the-next-page-a-book-recommendations-website-912aa262cc85)
+[Introducing The Next Page: A Book Recommendations Website](https://medium.com/@tobioreetijani/introducing-the-next-page-a-book-recommendations-website-912aa262cc85)
 <!-- - Oluwaseyi's article: -->
 
 ### Visit *The Next Page*
