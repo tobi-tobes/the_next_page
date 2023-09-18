@@ -33,9 +33,10 @@
 - Oluwaseyi Salami (Back end): [Github](https://github.com/Pinerealm), [LinkedIn](https://www.linkedin.com/in/osalami/)
 
 ### Blog Posts
-After the development stage of the project, we wrote a blog post to reflect on our journey building *The Next Page*. Check out the article here:
-[Introducing The Next Page: A Book Recommendations Website](https://medium.com/@tobioreetijani/introducing-the-next-page-a-book-recommendations-website-912aa262cc85)
-<!-- - Oluwaseyi's article: -->
+After the development stage of the project, we wrote a blog post to reflect on our journey building *The Next Page*. Check out the articles here:
+
+- Oluwatobi's article: [Introducing The Next Page: A Book Recommendations Website](https://medium.com/@tobioreetijani/introducing-the-next-page-a-book-recommendations-website-912aa262cc85)
+- Oluwaseyi's article: [Building "The Next Page" Book Recommendation App](https://pinerealmz.medium.com/building-the-next-page-book-recommendation-app-f475cd3f8f03)
 
 ### Visit *The Next Page*
 *The Next Page* is free and easy to use; no login required! Visit it here: [*The Next Page*](http://project.web-osalami.tech/the_next_page/)
@@ -48,7 +49,7 @@ As such, we focused on utilizing the Python object model, using SQLAlchemy to ma
 
 The project took about three weeks to complete - two weeks for the main development stage, and the remaining week for clean up.
 
-For the front end, we used HTML, CSS, and JavaScript (with the jQuery library) without any frameworks. We had initially wanted to use the Vue.JS front-end framework, but since the time we had for development was so short, we didn't want to spend the majority of that time battling with learning new syntax and essentially experimenting. We wanted this project to be a reflection of what we'd learned so far while also challenging me in subtle ways and dedicate our time to solidifying our understanding of JavaScript and jQuery.
+For the front end, we used HTML, CSS, and JavaScript (with the jQuery library) without any frameworks. We had initially wanted to use the Vue.JS front-end framework, but since the time we had for development was so short, we didn't want to spend the majority of that time battling with learning new syntax and essentially experimenting.
 
 For the back end, we used plain Python as well as the Flask web framework for the API and the SQLAlchemy library for mapping our Python objects to the MySQL database. These are all technologies we used during the course of the program, and again we wanted to really solidify our understanding of the concepts we had touched on while also challenging ourselves with our unique project requirements.
 
