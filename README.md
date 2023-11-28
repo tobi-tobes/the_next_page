@@ -39,7 +39,8 @@ After the development stage of the project, we wrote a blog post to reflect on o
 - Oluwaseyi's article: [Building "The Next Page" Book Recommendation App](https://pinerealmz.medium.com/building-the-next-page-book-recommendation-app-f475cd3f8f03)
 
 ### Visit *The Next Page*
-*The Next Page* is free and easy to use; no login required! Visit it here: [*The Next Page*](http://project.web-osalami.tech/the_next_page/)
+*The Next Page* is free and easy to use; no login required! *We are in the process of setting a new host for the site; stay tuned for updates,
+and in the meantime, enjoy testing out the app on your computer*!
 
 ## Getting Technical
 ### Overview and Story
@@ -75,7 +76,7 @@ Within the console, run `help <command>` for more information on each command.
 For the database, we used SQLAlchemy as the ORM to map our objects to the database based on the above schema. This provided a seamless transition between our Python objects and the database tables.
 
 ### RESTful API
-The API can be found in the `api` directory (once you've cloned the repository) and runs on port 5001. To use the API, curl (terminal) or type in your browser `http://54.82.111.149:5001/api/v1/...` with the following defined routes:
+The API can be found in the `api` directory (once you've cloned the repository) and runs on port 5001. To use the API, curl (terminal) or type in your browser `http://[YOUR-LOCAL-IP]:5001/api/v1/...` with the following defined routes:
 
 - `/books/random` (GET): retrieves a random book from the database
 - `/books` (POST): fetches books based on given book_ids
@@ -177,7 +178,7 @@ Some further guidelines:
 Thank you again for thinking of contributing to this project! And many thanks to GitHub user @briandk for the [contributing template](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62)!
 
 ## Related Projects
-- The AirBnB Clone - [HBNB](http://54.160.124.170/)
+- The AirBnB Clone - [HBNB](https://github.com/tobi-tobes/AirBnB_clone_v4)
 
 ## License
 MIT License
